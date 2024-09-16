@@ -1,4 +1,4 @@
-import { addIcon, Notice, Plugin, TFile } from "obsidian";
+import { addIcon, Notice, Plugin } from "obsidian";
 import { whatsAppIcon } from "./assets/whatsapp";
 import { convertNote } from "src/convertNote";
 
