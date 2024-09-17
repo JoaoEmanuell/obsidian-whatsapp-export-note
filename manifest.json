@@ -1,11 +1,10 @@
 {
 	"id": "whatsapp-export-note",
 	"name": "WhatsApp export note",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "0.15.0",
 	"description": "Convert the current note for WhatsApp format to share.",
 	"author": "JoaoEmanuell",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"authorUrl": "https://joaoemanuell.vercel.app/",
 	"isDesktopOnly": false
 }
