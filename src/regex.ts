@@ -8,12 +8,15 @@ function extractMarkdownLinks(markdown: string) {
 
 function extractItalic(markdown: string) {
 	// Regex for find all italic
-	const regex = /(?<!\*)\*([^*]+)\*(?!\*)/g;
+	const regex = /(\*\w*\w\*)/g;
 
 	// Replace the italic markdown for whatsapp italic
-	return markdown.replace(regex, (match, p1) => {
+	markdown = markdown.replace(regex, (match, p1) => {
 		return `_${p1}_`;
 	});
+	markdown = markdown.replaceAll("*_*", "**"); // bold
+	markdown = markdown.replaceAll("*_", "_").replaceAll("_*", "_"); // italic
+	return markdown;
 }
 
 function convertBold(markdown: string) {
@@ -63,6 +66,10 @@ function convertEquations(markdown: string) {
 	});
 }
 
+function convertCheckList(markdown: string) {
+	return markdown.replaceAll("- [ ] ", "- ").replaceAll("- [x] ", "- ");
+}
+
 function removeExtraBreakLines(markdown: string) {
 	const regex = /\n{3,}/g;
 
@@ -88,6 +95,7 @@ export function converts(markdown: string) {
 	markdown = convertQuote(markdown);
 	markdown = convertHighlight(markdown);
 	markdown = convertEquations(markdown);
+	markdown = convertCheckList(markdown);
 	markdown = removeHorizontalLine(markdown);
 	markdown = removeExtraBreakLines(markdown);
 	return markdown;
