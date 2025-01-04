@@ -7,13 +7,13 @@ export default class WhatsappExportNotePlugin extends Plugin {
 		// add whatsApp icon
 		addIcon("whatsapp", whatsAppIcon);
 
-		this.addRibbonIcon("whatsapp", "Exportar nota", async () => {
+		this.addRibbonIcon("whatsapp", "Export note", async () => {
 			await this.exportNote();
 		});
 
 		this.addCommand({
 			id: "whatsapp-export-note-export",
-			name: "Exportar nota",
+			name: "Export note",
 			callback: async () => {
 				await this.exportNote();
 			},
@@ -23,10 +23,10 @@ export default class WhatsappExportNotePlugin extends Plugin {
 	onunload() {}
 
 	async exportNote() {
-		new Notice("Exportar nota");
+		new Notice("Export note");
 		const noteFile = this.app.workspace.getActiveFile();
 		if (!noteFile) {
-			new Notice("Abra uma nota para que ela possa ser exportada!");
+			new Notice("Open a note so it can be exported!");
 			return;
 		}
 		const text = await this.app.vault.read(noteFile);
@@ -39,7 +39,7 @@ export default class WhatsappExportNotePlugin extends Plugin {
 		)}-whatsapp-${date.toISOString().replaceAll(":", "_")}.md`;
 		await this.app.vault.create(fullPathForNewNote, converted);
 		new Notice(
-			"Nota exportada com sucesso, copie o conteúdo dela e envie para o whatsapp"
+			"Note exported successfully, copy its content and send it to WhatsApp"
 		);
 	}
 }
