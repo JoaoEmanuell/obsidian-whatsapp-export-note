@@ -12,7 +12,7 @@ export default class WhatsappExportNotePlugin extends Plugin {
 		});
 
 		this.addCommand({
-			id: "whatsapp-export-note-export",
+			id: "export-note",
 			name: "Export note",
 			callback: async () => {
 				await this.exportNote();
