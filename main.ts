@@ -54,8 +54,7 @@ export default class WhatsappExportNotePlugin extends Plugin {
 			""
 		)}-whatsapp-${date.toISOString().replaceAll(":", "_")}.md`;
 		await this.app.vault.create(fullPathForNewNote, converted);
-		new Notice(
-			"Note exported successfully, copy its content and send it to WhatsApp"
-		);
+		await navigator.clipboard.writeText(converted);
+		new Notice("Note exported and copied to clipboard!");
 	}
 }
